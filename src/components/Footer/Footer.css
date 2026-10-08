@@ -1,0 +1,9 @@
+.main-footer {
+  background: white;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+  color: #718096;
+  margin-top: 40px;
+}

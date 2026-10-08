@@ -1,0 +1,41 @@
+:root {
+  --primary: #ff9ebb;
+  --primary-dark: #e07a98;
+  --secondary: #8ce1e6;
+  --secondary-dark: #4ebcc3;
+  --accent: #ffb84d;
+  --purple: #923c84;
+  --bg-light: #fffbf5;
+  --card-bg: #ffffff;
+  --text: #4a5568;
+  --text-dark: #2d3748;
+  --border: #f0e6d2;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  
+  --font-title: 'Fredoka', cursive, sans-serif;
+  --font-body: 'Quicksand', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-light);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-title);
+  color: var(--text-dark);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

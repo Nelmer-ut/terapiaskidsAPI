@@ -1,0 +1,33 @@
+.app-button {
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  border-radius: 20px;
+  padding: 8px 18px;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.app-button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.app-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.app-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.app-button--primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.app-button--secondary {
+  background-color: white;
+  color: var(--primary-dark);
+  border: 1px solid var(--primary);
+}

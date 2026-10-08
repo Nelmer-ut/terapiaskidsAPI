@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "name": "Programa Psicokids",
+    "category": "Niños",
+    "target": "Niños y Niñas",
+    "ageGroup": "6 a 9 años",
+    "duration": "12 semanas",
+    "modality": "Presencial / Online",
+    "price": 80000,
+    "description": "Desarrollo de seguridad, autonomía, hábitos diarios y regulación emocional de forma lúdica con material interactivo.",
+    "features": [
+      "Reloj de rutinas",
+      "Juegos de autorregulación",
+      "Diploma al finalizar"
+    ],
+    "image": "/images/psicokids.jpeg"
+  },
+  {
+    "id": 2,
+    "name": "Taller Bienestar Infantil",
+    "category": "Niños",
+    "target": "Niños y Niñas",
+    "ageGroup": "6 a 9 años",
+    "duration": "4 meses (Sept - Dic)",
+    "modality": "Presencial",
+    "price": 80000,
+    "description": "Espacio preventivo grupal en Juan José Latorre 461 (Puertas de Mar) para comprender emociones y fortalecer la autoestima.",
+    "features": [
+      "Sector Puertas de Mar",
+      "Materiales incluidos",
+      "Retroalimentación a padres"
+    ],
+    "image": "/images/programaninos.jpeg"
+  },
+  {
+    "id": 3,
+    "name": "Programa Bienestar Adolescente",
+    "category": "Adolescentes",
+    "target": "Estudiantes y Jóvenes",
+    "ageGroup": "10 a 16 años",
+    "duration": "12 semanas (4 meses)",
+    "modality": "Presencial / Online",
+    "price": 80000,
+    "description": "Herramientas de autoconocimiento frente a la ansiedad, el estrés, uso saludable de redes, sexualidad y orientación vocacional.",
+    "features": [
+      "Uso sano de tecnologías",
+      "Autoestima y autocompasión",
+      "Cuadernillo de trabajo"
+    ],
+    "image": "/images/programaadolescentes.jpeg"
+  },
+  {
+    "id": 4,
+    "name": "Programa: Lidera tus Emociones",
+    "category": "Adultos",
+    "target": "Mujeres Emprendedoras",
+    "ageGroup": "Madres y Emprendedoras",
+    "duration": "4 semanas",
+    "modality": "Online / Presencial Grupal",
+    "price": 85000,
+    "description": "Liderazgo emocional en Terapia Cognitivo Conductual (TCC) para reestructurar creencias limitantes y eliminar el autosabotaje.",
+    "features": [
+      "Conciencia emocional",
+      "Workbook terapéutico",
+      "Sesiones grupales en vivo"
+    ],
+    "image": "/images/lideraemociones.jpeg"
+  },
+  {
+    "id": 5,
+    "name": "Programa: Mamá Respira y Reinvéntate",
+    "category": "Adultos",
+    "target": "Madres Emprendedoras",
+    "ageGroup": "Madres",
+    "duration": "4 sesiones + 1 individual",
+    "modality": "Online (Comienza en Agosto)",
+    "price": 95000,
+    "description": "Espacio de acompañamiento psicológico y formativo usando el método R.E.S.P.I.R.A. para priorizar sin culpa y emprender.",
+    "features": [
+      "Comunidad privada de mamás",
+      "Sesión 1:1 personalizada",
+      "Material descargable"
+    ],
+    "image": "/images/reinventate.jpeg"
+  }
+]
