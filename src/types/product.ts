@@ -10,4 +10,7 @@ export interface Product {
   description: string;
   features: string[];
   image: string;
+  // Datos que llegan desde la API (dummyjson)
+  rating?: number;
+  stock?: number;
 }

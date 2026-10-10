@@ -70,6 +70,8 @@
 .meta-tag.target { background-color: #e0f7fa; color: #00796b; }
 .meta-tag.duration { background-color: #fff3e0; color: #e65100; }
 .meta-tag.modality { background-color: #f3e5f5; color: #7b1fa2; }
+.meta-tag.rating { background-color: #fff8e1; color: #b26a00; }
+.meta-tag.stock { background-color: #e8f5e9; color: #2e7d32; }
 
 .product-card-description {
   font-size: 0.9rem;

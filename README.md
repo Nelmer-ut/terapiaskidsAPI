@@ -9,9 +9,10 @@ filtrar por categoría de público objetivo y armar una selección (carrito) con
 pagar antes de confirmar la inscripción.
 
 Esta versión es la continuación de la Tarea 1: mantiene el mismo diseño, tarjetas y
-componentes, y agrega el **consumo de datos con `fetch` dentro de `useEffect`**, con manejo
-de estados de **carga** (loading), **error** y **datos** (products), y una interfaz
-responsiva para desktop y mobile.
+componentes, y agrega el **consumo de la API pública [DummyJSON](https://dummyjson.com/docs/products)**
+(`https://dummyjson.com/products`) con `fetch` dentro de `useEffect`, manejo de estados de
+**carga** (loading), **error** y **datos** (products), y una interfaz responsiva para
+desktop y mobile.
 
 ## Componentes creados
 
@@ -21,21 +22,32 @@ Todos están en `src/components`, cada uno en su carpeta con su `.tsx` y su `.cs
 |---|---|
 | **Header** | Logo y nombre de la tienda (TerapiasKids), con el nombre de la profesional. |
 | **SearchBar** | Input controlado para buscar programas por nombre. |
-| **ProductCard** | Muestra un programa recibido por **props** (nombre, categoría, edad, duración, modalidad, características, precio). Maneja la cantidad con `useState`. |
+| **ProductCard** | Muestra un programa recibido por **props** (nombre, categoría, edad, duración, modalidad, valoración, cupos, características, precio). Maneja la cantidad con `useState`. |
 | **ProductList** | Renderiza la lista de `ProductCard` con `map()` y `key`; muestra un mensaje si no hay resultados. |
-| **Loader** | Indicador visual de carga mientras se esperan los datos. |
-| **ErrorMessage** | Muestra el error cuando falla la petición, con botón "Reintentar". |
+| **Loader** | Indicador visual de carga mientras se esperan los datos de la API. |
+| **ErrorMessage** | Muestra el error cuando falla la API, con botón "Reintentar". |
 | **Footer** | Información básica de contacto y ubicación. |
 | **Button** | Botón reutilizable con variantes `primary` / `secondary`. |
 
-## Consumo de datos
+## Consumo de API
 
-- Los programas se obtienen con `fetch('/programas.json')` dentro de `useEffect` (`src/App.tsx`).
-- Se usa `AbortController` para cancelar la petición si el componente se desmonta.
+- Endpoint: `https://dummyjson.com/products`, consumido con `fetch` dentro de `useEffect` en `src/App.tsx`.
+- Se usa `AbortController` para cancelar las peticiones si el componente se desmonta.
 - Estados en `App.tsx`: `products` (datos), `loading` (carga) y `error`.
-- Si la respuesta no es exitosa o falla la red, se muestra `ErrorMessage` y se puede reintentar.
+- Si la API responde con error o falla la red, se muestra `ErrorMessage` y se puede reintentar.
 - La búsqueda filtra por nombre (y descripción) sin distinguir mayúsculas/minúsculas, y se puede combinar con las pestañas de categoría.
-- Los datos viven en `public/programas.json`; cada programa tiene `id`, `name`, `category`, `price`, `image` y otros campos propios del servicio.
+
+### Cómo se adaptó la API al servicio profesional
+
+Como el sitio ofrece servicios de psicología, el catálogo muestra únicamente los programas del
+servicio, no los productos genéricos de DummyJSON. Para eso:
+
+1. El contenido propio de cada programa (nombre, descripción, categoría, precio en CLP, imagen,
+   características) vive en `public/programas.json`.
+2. La app consulta la API de DummyJSON y, con el adaptador `src/utils/mergePrograms.ts`, enlaza
+   cada programa con el producto de la API que tiene el mismo `id`.
+3. De la API se toman `rating` (valoración) y `stock` (cupos disponibles), que se muestran en la
+   tarjeta. Son **datos de demostración** de la API pública.
 
 ## Tecnologías usadas
 
@@ -43,6 +55,7 @@ Todos están en `src/components`, cada uno en su carpeta con su `.tsx` y su `.cs
 - TypeScript
 - Vite
 - CSS puro (variables CSS, flexbox, grid y media queries)
+- API pública DummyJSON
 
 ## Instrucciones para ejecutar el proyecto
 
@@ -89,7 +102,10 @@ src/
 │   ├── Button/
 │   └── Footer/
 ├── types/
-│   └── product.ts
+│   ├── product.ts
+│   └── apiProduct.ts
+├── utils/
+│   └── mergePrograms.ts
 ├── App.tsx
 └── main.tsx
 ```

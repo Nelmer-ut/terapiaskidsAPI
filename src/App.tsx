@@ -7,10 +7,14 @@ import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import Button from './components/Button/Button';
 import Footer from './components/Footer/Footer';
 import { Product } from './types/product';
+import { ApiProductsResponse } from './types/apiProduct';
+import { mergeProgramsWithApi } from './utils/mergePrograms';
 import './App.css';
 
-// Los programas se sirven como un archivo JSON (public/programas.json) y se consumen con fetch.
-const API_URL = '/programas.json';
+// Contenido propio del servicio (programas de psicología)
+const PROGRAMS_URL = '/programas.json';
+// API pública: de aquí salen la valoración y los cupos disponibles de cada programa
+const API_URL = 'https://dummyjson.com/products';
 
 interface CartItem {
   product: Product;
@@ -36,12 +40,19 @@ function App() {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(API_URL, { signal: controller.signal });
-        if (!response.ok) {
-          throw new Error(`Error ${response.status}: no se pudo obtener la información.`);
+        const [programsResponse, apiResponse] = await Promise.all([
+          fetch(PROGRAMS_URL, { signal: controller.signal }),
+          fetch(API_URL, { signal: controller.signal }),
+        ]);
+        if (!programsResponse.ok) {
+          throw new Error(`Error ${programsResponse.status}: no se pudieron obtener los programas.`);
         }
-        const data: Product[] = await response.json();
-        setProducts(data);
+        if (!apiResponse.ok) {
+          throw new Error(`Error ${apiResponse.status}: no se pudo obtener la información de la API.`);
+        }
+        const programs: Product[] = await programsResponse.json();
+        const apiData: ApiProductsResponse = await apiResponse.json();
+        setProducts(mergeProgramsWithApi(programs, apiData.products));
       } catch (err) {
         if (err instanceof DOMException && err.name === 'AbortError') return;
         setError(

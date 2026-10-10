@@ -38,6 +38,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
           <span className="meta-tag target">🎯 {product.target}</span>
           <span className="meta-tag duration">⏱️ {product.duration}</span>
           <span className="meta-tag modality">📍 {product.modality}</span>
+          {product.rating !== undefined && (
+            <span className="meta-tag rating">⭐ {product.rating.toFixed(1)}</span>
+          )}
+          {product.stock !== undefined && (
+            <span className="meta-tag stock">🎟️ Cupos: {product.stock}</span>
+          )}
         </div>
         
         <p className="product-card-description">{product.description}</p>
